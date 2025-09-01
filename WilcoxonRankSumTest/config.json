@@ -1,0 +1,17 @@
+{
+	"Tasks": "22",
+	"Algorithm": "APMTO",
+	"CompareSel":"Compares",
+	"output":"APMTO",
+	"LinePerT":2,
+	"ColPerT":1,
+	"fmt":"font",
+	"Compares": [
+		"MFEA",
+		"MFEA-DGD",
+		"AEMTO",
+		"MKTDE",
+		"OTMTO",
+		"BLKT"
+	]
+}
