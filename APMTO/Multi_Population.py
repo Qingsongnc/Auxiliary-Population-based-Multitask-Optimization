@@ -211,7 +211,7 @@ def main(iteration=1000, Num=50, time=30, Pop=MultiPops, filename='output', Prob
     f.close()
     fcsv = open(filename + '.csv', 'w', encoding='UTF-8')
     fcsv.close()
-    seed = np.loadtxt('seed.csv', delimiter=',')
+    seed = np.loadtxt('seed.csv', delimiter=',', dtype=int)
     # Get test suites
     Ps = TasksIntro(Problems)
     # Output arrays initialization
