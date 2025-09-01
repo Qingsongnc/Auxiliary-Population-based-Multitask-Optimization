@@ -222,5 +222,5 @@ class OTMTO(MultiPops):
 
 if __name__ == '__main__':
     # Algorithm should be replaced by the Algorithm class name.
-    main(iteration=1000, Num=50, time=30, Pop=OTMTO, filename='output', Problems='22',
+    main(iteration=1000, Num=50, time=30, Pop=OTMTO, filename='OTMTO', Problems='22',
          UseFE=True, MaxFEs=1e+5, OutputCurve=True, OutputNum=50)

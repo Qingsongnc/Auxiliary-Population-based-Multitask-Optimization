@@ -152,5 +152,5 @@ class AEMTO(MultiPops):
 
 if __name__ == '__main__':
     # Algorithm should be replaced by the Algorithm class name.
-    main(iteration=1000, Num=100, time=30, Pop=AEMTO, filename='output', Problems='22',
+    main(iteration=1000, Num=100, time=30, Pop=AEMTO, filename='AEMTO', Problems='22',
          UseFE=False, MaxFEs=1e+5, OutputCurve=True, OutputNum=50)
