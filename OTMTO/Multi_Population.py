@@ -170,21 +170,6 @@ def TasksIntro(Problems):
     Ps = []
     ProbList = Problems.split('+')
     for Prob in ProbList:
-        if Prob == '17':
-            from CEC2017.tasks import CI_HS, CI_MS, CI_LS, PI_HS, PI_MS, PI_LS, NI_HS, NI_MS, NI_LS
-            Ps.extend(
-                [
-                    CI_HS(),
-                    CI_MS(),
-                    CI_LS(),
-                    PI_HS(),
-                    PI_MS(),
-                    PI_LS(),
-                    NI_HS(),
-                    NI_MS(),
-                    NI_LS()
-                ]
-            )
         if Prob == '22':
             from CEC2022.tasks import Benchmark1, Benchmark2, Benchmark3, Benchmark4, Benchmark5, \
                                        Benchmark6, Benchmark7, Benchmark8, Benchmark9, Benchmark10
@@ -202,25 +187,9 @@ def TasksIntro(Problems):
                     Benchmark10(),
                 ]
             )
-        if Prob == 'Ma19':
-            from CEC2019MaTO.tasks import MaTO19
-            for i in range(6):
-                Ps.append(MaTO19(i))
-        if Prob == 'WCCI20':
-            from WCCI2020MaTO.tasks import WCCI2020MaTO
-            for i in range(10):
-                Ps.append(WCCI2020MaTO(i))
-        if Prob == 'PKACP':
-            from RealWorld.PKACP.tasks import PKACP
-            dims = [20, 25, 30, 35, 40, 50, 100]
-            for dim in dims:
-                Ps.append(PKACP(dim))
-        if Prob == 'SCP':
-            from RealWorld.SCP.tasks import SCP
-            Ps.append(SCP())
     return Ps
 
-def main(iteration=1000, Num=50, time=30, Pop=MultiPops, filename='output', Problems='17',
+def main(iteration=1000, Num=50, time=30, Pop=MultiPops, filename='output', Problems='22',
          UseFE=True, MaxFEs=1e+5, OutputCurve=False, OutputNum=50, **kwargs):
     """
     The main process of an Evolutionary Multitask Algorithm.
@@ -229,11 +198,7 @@ def main(iteration=1000, Num=50, time=30, Pop=MultiPops, filename='output', Prob
     :param time: The repetition time. Default value is 30.
     :param Pop: The Algorithm class Name (In The Enherited class) contains several populations.
     :param filename: The File name to output to.
-    :param Problems: The Problem set, Default '17'.
-            The values are from ['17', '22', 'PKACP'，‘SCP’, 'Ma19'] and their combination connected with '+',
-            For example, Problems='17+22' means tasks contains both 17 and 22.
-            The combination could be infinite like '17+22+17+17'
-                (But it's not recommended to repeat the same problem sets).
+    :param Problems: The Problem set, Default '22'.
     :param UseFE: Whether use Function Evaluation number for the termination condition or not. Default True.
     :param MaxFEs: If Use FE, The Max Function Evaluation number. Default 1e+5.
     :param OutputCurve: Whether to output the convergence curve data to screen. Default False.

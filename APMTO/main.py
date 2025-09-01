@@ -142,4 +142,4 @@ class Algorithm(MultiPops):
 if __name__ == '__main__':
     # Algorithm should be replaced by the Algorithm class name.
     main(iteration=1000, Num=100, time=30, Pop=Algorithm, filename='APMTO', Problems='22',
-         UseFE=True, MaxFEs=1e+5, OutputCurve=False, OutputNum=50)
+         UseFE=True, MaxFEs=1e+5, OutputCurve=True, OutputNum=50)
