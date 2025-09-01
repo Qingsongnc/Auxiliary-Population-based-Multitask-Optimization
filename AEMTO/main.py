@@ -1,4 +1,3 @@
-import os
 import numpy as np
 from Multi_Population import MultiPops, MPPopulation, MPIndividual, main
 
@@ -64,26 +63,6 @@ class Population(MPPopulation):
         self.ptsf = 0
 
     def Evolve(self, MPop, **kwargs):
-        # V = np.zeros(shape=(self.size, self.Task.Dimension))
-        # U = np.zeros(shape=(self.size, self.Task.Dimension))
-        # # Generate difference vector
-        # for i in range(self.size):
-        #     rands = np.random.choice(range(0, self.size - 1), 3, replace=False)
-        #     rands[rands >= i] += 1
-        #     V[i] = self.Population[rands[0]].X + self.F * (self.Population[rands[1]].X - self.Population[rands[2]].X)
-        #     # Binomial crossover
-        # for i in range(self.size):
-        #     U[i] = binomial_crossover(V[i], self.Population[i].X, self.CR)
-        # # Selelction
-        # r = 0
-        # for i in range(self.size):
-        #     fn = self.Task.function(U[i])
-        #     if fn < self.Task.function(self.Population[i].X):
-        #         self.Population[i].X = U[i]
-        #         if fn < self.best:
-        #             self.best = fn
-        #         r = r + 1
-
         # Generate difference vector
         r = 0
         for Popi in range(self.Num):
@@ -170,143 +149,8 @@ class AEMTO(MultiPops):
                 self.p_tsf_l + (self.p_tsf_u - self.p_tsf_l) * self.Ps[ti].qo / (self.Ps[ti].qo + self.Ps[ti].qs + 1e-6)
 
 
-# def biagen(center, b, size=50):
-#     if b == 0:
-#         r = np.zeros(shape=size)
-#     else:
-#         r = np.random.uniform(-b, b, size=size)
-#     o = r + center
-#     return o
 
-
-# if __name__ == '__main__':
-#     bias = [0, 0.005, 0.025, 0.05]
-#     iteration = 1000
-#     f = open('output.csv', 'w')
-#     for bia in bias:
-#         biavec = [
-#             biagen(24, bia * 100),
-#             biagen(25, bia * 100),
-#             biagen(-170.9687, bia * 1000),
-#             biagen(50, bia * 200),
-#             biagen(25, bia * 100),
-#             biagen(-26, bia * 100),
-#             biagen(-25, bia * 100),
-#             biagen(-670.9687, bia * 1000),
-#             biagen(-50, bia * 200),
-#             biagen(-25, bia * 100),
-#         ]
-#         tasks = [
-#             Rosenbrock(bias=biavec[0]),
-#             Ackley(bias=biavec[1]),
-#             Schwefel(bias=biavec[2]),
-#             Griewank(bias=biavec[3]),
-#             Rastrigin(bias=biavec[4]),
-#             Rosenbrock(bias=biavec[5]),
-#             Ackley(bias=biavec[6]),
-#             Schwefel(bias=biavec[7]),
-#             Griewank(bias=biavec[8]),
-#             Rastrigin(bias=biavec[9]),
-#         ]
-#         mto = AEMTO(tasks)
-#         for j in range(1, iteration + 1):
-#             mto.optimize()
-#             if j % 50 == 0:
-#                 print('iteration ' + str(j) + ':')
-#                 mto.GetBest()
-#         mto.GetBest(f)
-#     f.close()
 if __name__ == '__main__':
     # Algorithm should be replaced by the Algorithm class name.
-    main(iteration=1000, Num=100, time=1, Pop=AEMTO, filename='outputtest', Problems='17',
-         UseFE=False, MaxFEs=1e+5, OutputCurve=False, OutputNum=50)
-    # filename = 'outputPKACP'
-    # f = open(filename + '.txt', 'w', encoding='UTF-8')
-    # f.close()
-    # iteration = 100
-    # time = 30
-    # outputnum = 50
-    # Num = 20
-    # # Ps = [
-    # #     CI_HS(),
-    # #     CI_MS(),
-    # #     CI_LS(),
-    # #     PI_HS(),
-    # #     PI_MS(),
-    # #     PI_LS(),
-    # #     NI_HS(),
-    # #     NI_MS(),
-    # #     NI_LS(),
-    # #     Benchmark1(),
-    # #     Benchmark2(),
-    # #     Benchmark3(),
-    # #     Benchmark4(),
-    # #     Benchmark5(),
-    # #     Benchmark6(),
-    # #     Benchmark7(),
-    # #     Benchmark8(),
-    # #     Benchmark9(),
-    # #     Benchmark10(),
-    # # ]
-    # # Ps = [SCP()]
-    # # Ps = [MaTO19(i) for i in range(6)]
-    # # Ps = [WCCI2020MaTO(i) for i in range(10)]
-    # dims = [20, 30, 40, 50, 100]
-    # Ps = [PKACP(dim) for dim in dims]
-    # outputs = []
-    # Curves = []
-    # outputfits = []
-    # for index, tasks in enumerate(Ps):
-    #     f = open(filename + '.txt', 'a', encoding='UTF-8')
-    #     f.write('Population ' + str(index + 1) + ':\n')
-    #     f.close()
-    #     Ntasks = len(tasks)
-    #     Curves = np.zeros((Ntasks, outputnum + 1))
-    #     outputt = np.zeros(Ntasks)
-    #     outputfitt = [np.zeros(time) for _ in range(Ntasks)]
-    #     for t in range(0, time):
-    #         print('Time ' + str(t + 1) + ' for population ' + str(index + 1) + ':')
-    #         P = AEMTO(tasks, Num)
-    #         for Nt, task in enumerate(P.Task):
-    #             print('Task ' + str(Nt), task.Info(), end=' ')
-    #             Curves[Nt, 0] += P.GetBest(scout=False)[Nt]
-    #         print()
-    #         itrt = 0
-    #         for itrt in range(1, iteration + 1):
-    #             P.optimize()
-    #             if iteration >= 20 and itrt % int(iteration / 20) == 0:
-    #                 print('Iteration', str(itrt), ':', end=' ')
-    #                 P.GetBest(scout=True)
-    #             if itrt % int(iteration / outputnum) == 0:
-    #                 ret = P.GetBest()
-    #                 for Nt in range(len(P.Task)):
-    #                     Curves[Nt, int(itrt / iteration * outputnum + 0.1)] += ret[Nt]
-    #         f = open(filename + '.txt', 'a', encoding='UTF-8')
-    #         f.write('Time' + str(t + 1) + ':\n')
-    #         ret = P.GetBest(scout=True, fout=f)
-    #         f.close()
-    #         for Nt in range(Ntasks): outputfitt[Nt][t] = ret[Nt]
-    #         outputt += ret
-    #     outputs.append(outputt)
-    #     outputfits.extend(outputfitt)
-    #     Curves /= time
-    #     for ti in range(Ntasks):
-    #         curvefilename = 'Curve' + filename
-    #         os.makedirs(curvefilename, exist_ok=True)
-    #         curvefilename = os.path.join(curvefilename, 'T' + str(index) + 't' + str(ti) + '.csv')
-    #         np.savetxt(curvefilename, Curves[ti].reshape(1, outputnum + 1), fmt='%.15g', delimiter=',')
-    #
-    # # Output results
-    # outputfits = np.array(outputfits).T
-    # np.savetxt(filename + '_fit.csv', outputfits, fmt='%.15g', delimiter=',')
-    # for i in range(len(outputs)):
-    #     for j in range(len(outputs[i])):
-    #         outputs[i][j] /= time
-    #         print(outputs[i][j], end=',')
-    #     print()
-    # fcsv = open(filename + '.csv', 'w', encoding='UTF-8')
-    # for i in range(len(outputs)):
-    #     for j in range(len(outputs[i])):
-    #         fcsv.write(str(outputs[i][j]) + ',')
-    #     fcsv.write('\n')
-    # fcsv.close()
+    main(iteration=1000, Num=100, time=30, Pop=AEMTO, filename='output', Problems='22',
+         UseFE=False, MaxFEs=1e+5, OutputCurve=True, OutputNum=50)
