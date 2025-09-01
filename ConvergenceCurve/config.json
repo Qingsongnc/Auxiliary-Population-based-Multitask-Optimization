@@ -1,19 +1,8 @@
 {
-    "CaseNum":19,
+    "CaseNum":10,
     "TaskNum":2,
     "output":"APMTO",
     "algorithmset":"APMTO",
-    "AEDMTO":[
-        "AEDMTO",
-        "MFEA",
-        "MFEA-II",
-        "MFDE",
-        "MTGA",
-        "AEMTO",
-        "MKTDE",
-        "OTMTO",
-        "BLKT-DE"
-    ],
     "APMTO":[
         "APMTO",
         "MFEA",
