@@ -211,6 +211,7 @@ def main(iteration=1000, Num=50, time=30, Pop=MultiPops, filename='output', Prob
     f.close()
     fcsv = open(filename + '.csv', 'w', encoding='UTF-8')
     fcsv.close()
+    seed = np.loadtxt('seed.csv', delimiter=',')
     # Get test suites
     Ps = TasksIntro(Problems)
     # Output arrays initialization
@@ -228,6 +229,7 @@ def main(iteration=1000, Num=50, time=30, Pop=MultiPops, filename='output', Prob
         outputs = np.zeros(Ntasks)
         outputfitt = [np.zeros(time) for _ in range(Ntasks)]
         for t in range(time):
+            np.random.seed(seed[t, index])
             print('Time ' + str(t + 1) + ' for population ' + str(index + 1) + ':')
             P = Pop(tasks, iteration=iteration, Num=Num, UseFE=UseFE, MaxFEs=MaxFEs,
                     CurveNode=OutputNum if OutputCurve else None, **kwargs)
