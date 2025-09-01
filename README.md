@@ -9,5 +9,5 @@
 - The random seeds for 30 runs of all the algorithms;
 - data -The raw numerical output for APMTO and all the 6 compared algorithms;
 - WilcoxonRankSumTest -The code of the Wilcoxon's rank-sum test;
-- ConvergenceCurve -The code to generate the convergence curves.
-- README.md -The instruction
+- ConvergenceCurve -The code to generate the convergence curves;
+- README.md -The instruction.
