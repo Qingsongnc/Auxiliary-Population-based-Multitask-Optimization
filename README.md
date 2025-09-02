@@ -11,6 +11,7 @@
 - seed -The random seeds for APMTO, AEMTO, and OTMTO.
 - WilcoxonRankSumTest -The code of the Wilcoxon's rank-sum test;
 - ConvergenceCurve -The code to generate the convergence curves;
+- APMTO-supp.docx -The supplementary material for APMTO, which includes 6 tables related to the paper;
 - README.md -The instruction file.
 
 ## 2.The acquisition of the experimental results
